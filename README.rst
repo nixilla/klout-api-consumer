@@ -22,16 +22,16 @@ Identity methods
     $consumer = new Klout\Api\Consumer($key);
 
     // http://api.klout.com/v2/identity.json/tw/{twitter_id}
-    $identity = $consumer->getIdentity($twitter_id, Klout::TWITTER_ID);
+    $identity = $consumer->getIdentity($twitter_id, Identity::TWITTER_ID);
 
     // http://api.klout.com/v2/identity.json/gp/{google_id}
-    $identity = $consumer->getIdentity($google_id, Klout::GOOGLE_ID);
+    $identity = $consumer->getIdentity($google_id, Identity::GOOGLE_ID);
 
     // http://api.klout.com/v2/identity.json/twitter?screenName={twitter_screen_name}
-    $identity = $consumer->getIdentity($twitter_screen_name, Klout::TWITTER_SCREEN_NAME);
+    $identity = $consumer->getIdentity($twitter_screen_name, Identity::TWITTER_SCREEN_NAME);
 
     // http://api.klout.com/v2/identity.json/klout/{klout_id/tw
-    $identity = $consumer->getIdentity($klout_id, Klout::KLOUT_ID);
+    $identity = $consumer->getIdentity($klout_id, Identity::KLOUT_ID);
 
 User methods:
 '''''''''''''
@@ -43,20 +43,20 @@ User methods:
     $consumer = new Klout\Api\Consumer($key);
 
     // http://api.klout.com/v2/user.json/{klout_id}
-    $identity = $consumer->getIdentity($klout_id, Klout::KLOUT_ID);
+    $identity = $consumer->getIdentity($klout_id, Identity::KLOUT_ID);
 
     // http://api.klout.com/v2/user.json/{klout_id}/score
-    $score = $consumer->getIdentity($klout_id, Klout::KLOUT_ID)->getScore();
+    $score = $consumer->getIdentity($klout_id, Identity::KLOUT_ID)->getScore();
     // or if you have $identity
     $score = $identity->getScore();
 
     // http://api.klout.com/v2/user.json/{klout_id}/topics
-    $topics = $consumer->getIdentity($klout_id, Klout::KLOUT_ID)->getTopics();
+    $topics = $consumer->getIdentity($klout_id, Identity::KLOUT_ID)->getTopics();
     // or
     $topics = $identity->getTopics();
 
     // http://api.klout.com/v2/user.json/{klout_id}/influence
-    $influence = $consumer->getIdentity($klout_id, Klout::KLOUT_ID)->getInfluence();
+    $influence = $consumer->getIdentity($klout_id, Identity::KLOUT_ID)->getInfluence();
     // or
     $influence = $identity->getInfluence();
 
@@ -72,14 +72,14 @@ Other usage:
     $consumer = new Klout\Api\Consumer($key);
 
     $influencers = $consumer
-        ->getIdentity($twitter_screen_name, Klout::TWITTER_SCREEN_NAME)
+        ->getIdentity($twitter_screen_name, Identity::TWITTER_SCREEN_NAME)
         ->getInfluence()['myInfluencers']; // PHP 5.4
 
     foreach($influencers as $identity)
         echo $identity;
 
     // using ArrayAccess
-    $identity = $consumer->getIdentity($twitter_screen_name, Klout::TWITTER_SCREEN_NAME);
+    $identity = $consumer->getIdentity($twitter_screen_name, Identity::TWITTER_SCREEN_NAME);
     foreach($identity['influence']['myInfluencers'] as $someone)
         echo $someone;
 
