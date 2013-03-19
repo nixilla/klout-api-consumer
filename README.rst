@@ -45,12 +45,12 @@ User methods:
     // http://api.klout.com/v2/user.json/{klout_id}
     $identity = $consumer->getIdentity($klout_id, Klout::KLOUT_ID);
 
-    // http://api.klout.com/v2/user.json/635263/score
+    // http://api.klout.com/v2/user.json/{klout_id}/score
     $score = $consumer->getIdentity($klout_id, Klout::KLOUT_ID)->getScore();
     // or if you have $identity
     $score = $identity->getScore();
 
-    // http://api.klout.com/v2/user.json/635263/topics
+    // http://api.klout.com/v2/user.json/{klout_id}/topics
     $topics = $consumer->getIdentity($klout_id, Klout::KLOUT_ID)->getTopics();
     // or
     $topics = $identity->getTopics();
