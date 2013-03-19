@@ -1,14 +1,15 @@
 KloutApiConsumer
 ================
 
-This is small library that allows you to easily interact with "KloutAPI v2"_.
+This is small library that allows you to easily interact with `KloutAPI v2`_.
 
-.. _"KloutAPI v2": http://klout.com/s/developers/v2
+.. _`KloutAPI v2`: http://klout.com/s/developers/v2
 
 Usage:
 ``````
 
 Identity methods
+''''''''''''''''
 
 .. code-block:: php
 
@@ -33,6 +34,7 @@ Identity methods
     $identity = $consumer->getIdentity($klout_id, Klout::KLOUT_ID);
 
 User methods:
+'''''''''''''
 
 .. code-block:: php
 
@@ -58,7 +60,10 @@ User methods:
     // or
     $influence = $identity->getInfluence();
 
+
+
 Cool usage:
+'''''''''''
 
     <?php
 
