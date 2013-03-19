@@ -1,0 +1,26 @@
+{
+    "name": "nixilla/klout-api-consumer",
+    "description": "Klout API client in PHP",
+    "type": "library",
+    "keywords": [ "klout", "api" ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Janusz Slota",
+            "email": "janusz.slota@nixilla.com",
+            "homepage": "http://www.nixilla.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "kriswallsmith/buzz": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Klout": "lib/"
+        }
+    }
+}
