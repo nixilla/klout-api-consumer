@@ -9,7 +9,7 @@ class Identity implements \ArrayAccess
 
     const TWITTER_SCREEN_NAME = 'screenName';
 
-    public function getInstance(array $input, $consumer)
+    public static function getInstance(array $input, $consumer)
     {
         $instance = new self;
 
