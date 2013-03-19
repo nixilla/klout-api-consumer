@@ -22,5 +22,8 @@
         "psr-0": {
             "Klout": "lib/"
         }
+    },
+    "config": {
+        "bin-dir": "bin"
     }
 }
