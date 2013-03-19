@@ -62,8 +62,10 @@ User methods:
 
 
 
-Cool usage:
-'''''''''''
+Other usage:
+''''''''''''
+
+.. code-block:: php
 
     <?php
 
@@ -71,7 +73,7 @@ Cool usage:
 
     $influencers = $consumer
         ->getIdentity($twitter_screen_name, Klout::TWITTER_SCREEN_NAME)
-        ->getInfluence()['myInfluencers']; // PHP 5.4 of course
+        ->getInfluence()['myInfluencers']; // PHP 5.4
 
     foreach($influencers as $identity)
         echo $identity;
@@ -84,3 +86,4 @@ Cool usage:
     // you can also get their score, topics, influence too
     foreach($identity['influence']['myInfluencees'] as $identity)
         echo $identity['score'];
+
