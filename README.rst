@@ -80,10 +80,10 @@ Other usage:
 
     // using ArrayAccess
     $identity = $consumer->getIdentity($twitter_screen_name, Klout::TWITTER_SCREEN_NAME);
-    foreach($identity['influence']['myInfluencers'] as $identity)
-        echo $identity;
+    foreach($identity['influence']['myInfluencers'] as $someone)
+        echo $someone;
 
     // you can also get their score, topics, influence too
-    foreach($identity['influence']['myInfluencees'] as $identity)
-        echo $identity['score'];
+    foreach($identity['influence']['myInfluencees'] as $someone)
+        echo $someone['score']; // or $someone->getScore();
 
