@@ -73,4 +73,32 @@ class IdentityTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($identity->isLoaded(), 'Identity is loaded');
 
     }
+
+    /**
+     * @expectedException \RuntimeException
+     */
+    public function testUnset()
+    {
+        $identity = Identity::getInstance(array(Identity::KLOUT_ID => 123321));
+
+        unset($identity[Identity::KLOUT_ID]);
+    }
+
+    /**
+     * @expectedException \RuntimeException
+     */
+    public function testSet()
+    {
+        $identity = Identity::getInstance(array(Identity::KLOUT_ID => 123321));
+
+        $identity[Identity::KLOUT_ID] = '123321321';
+    }
+
+    public function testIsset()
+    {
+        $identity = Identity::getInstance(array(Identity::KLOUT_ID => 123321));
+
+        if(isset($identity[Identity::KLOUT_ID]))
+            $this->assertTrue(true);
+    }
 }

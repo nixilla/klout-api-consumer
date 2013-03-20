@@ -9,7 +9,15 @@ class ConsumerTest extends \PHPUnit_Framework_TestCase
 {
     public function testGetIdentityWithIdentity()
     {
-        $consumer = new Consumer($this->getClientWithAllCalls(Identity::getInstance(array(Identity::KLOUT_ID => 123321))), 'secret_key_here');
+        $consumer = new Consumer($this->getClientWithAllCalls(
+            Identity::getInstance(
+                array(
+                    Identity::KLOUT_ID => 123321,
+                    'influence' => array(
+                        'myInfluencers' => array('entity' => array('payload' => array()))
+                    )
+                )
+            )), 'secret_key_here');
 
         $identity = $consumer->getIdentity(Identity::getInstance(array(Identity::KLOUT_ID => 123321)));
 
