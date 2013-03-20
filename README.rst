@@ -74,7 +74,7 @@ Other usage:
     $consumer = new Klout\Api\Consumer($key);
 
     $influencers = $consumer
-        ->getIdentity($twitter_screen_name, Identity::TWITTER_SCREEN_NAME)
+        ->getIdentity($klout_id)
         ->getInfluence()['myInfluencers']; // PHP 5.4
 
     foreach($influencers as $identity)

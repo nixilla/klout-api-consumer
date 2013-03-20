@@ -43,4 +43,34 @@ class IdentityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(array('ok'), $identity->getInfluence(), 'Accessor method getInfluence OK');
         $this->assertEquals(array('ok'), $identity['influence'], 'Accessor method [influence] OK');
     }
+
+    public function testIsLoaded()
+    {
+        $identity = Identity::getInstance(array(Identity::KLOUT_ID => 123321));
+
+        $this->assertFalse($identity->isLoaded(), 'Identity is not loaded');
+
+        $consumer = $this
+            ->getMockBuilder('Klout\Api\Consumer')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $consumer
+            ->expects($this->once())
+            ->method('getIdentity')
+            ->with($this->equalTo($identity))
+            ->will(
+                $this->returnValue(Identity::getInstance(array(
+                    Identity::KLOUT_ID => 12345,
+                    'score' => 51,
+                    'topics' => array(),
+                    'influence' => array('ok')
+                )))
+            );
+
+        $identity = $consumer->getIdentity($identity);
+
+        $this->assertTrue($identity->isLoaded(), 'Identity is loaded');
+
+    }
 }

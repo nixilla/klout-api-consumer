@@ -20,6 +20,9 @@ class Identity implements \ArrayAccess
         if( ! isset($instance->container[self::KLOUT_ID]))
             $instance->container[self::KLOUT_ID] = isset($input['id']) ? $input['id'] : (isset($input['kloutId']) ? $input['kloutId'] : null);
 
+        if(isset($input['score']) && is_array($input['score']))
+            $instance->container['score'] = $input['score']['score'];
+
         return $instance;
     }
 
@@ -41,6 +44,19 @@ class Identity implements \ArrayAccess
     public function getId($type = Identity::KLOUT_ID)
     {
         return isset($this->container[$type]) ? $this->container[$type] : null;
+    }
+
+    public function isLoaded()
+    {
+        return
+            isset($this->container['score']) &&
+            isset($this->container['topics']) &&
+            isset($this->container['influence']);
+    }
+
+    public function toArray()
+    {
+        return $this->container;
     }
 
     public function offsetSet($offset, $value)
