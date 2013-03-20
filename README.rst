@@ -78,14 +78,26 @@ Other usage:
         ->getInfluence()['myInfluencers']; // PHP 5.4
 
     foreach($influencers as $identity)
-        echo $identity;
+        echo $identity['kloutId']; // only kloudId is available
 
     // using ArrayAccess
     $identity = $consumer->getIdentity($twitter_screen_name, Identity::TWITTER_SCREEN_NAME);
     foreach($identity['influence']['myInfluencers'] as $someone)
-        echo $someone;
+        if( ! $someone->isLoaded())
+            $someone = $consumer->getIdentity($someone);
 
     // you can also get their score, topics, influence too
     foreach($identity['influence']['myInfluencees'] as $someone)
-        echo $someone['score']; // or $someone->getScore();
-
+    {
+        if( ! $someone->isLoaded())
+        {
+            $someone = $consumer->getIdentity($someone);
+            echo $someone['score'];
+            echo $someone->getScore();
+        }
+        else
+        {
+            echo $someone['kloutId']; // is ok - kloutId is presents
+            echo $someone->getScore(); // equals to null
+        }
+    }

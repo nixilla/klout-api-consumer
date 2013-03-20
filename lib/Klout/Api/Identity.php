@@ -5,16 +5,14 @@ namespace Klout\Api;
 class Identity implements \ArrayAccess
 {
     private $container = array();
-    private $consumer;
 
     const TWITTER_SCREEN_NAME = 'screenName';
 
-    public static function getInstance(array $input, $consumer)
+    public static function getInstance(array $input)
     {
         $instance = new self;
 
         $instance->container = $input;
-        $instance->consumer = $consumer;
 
         return $instance;
     }

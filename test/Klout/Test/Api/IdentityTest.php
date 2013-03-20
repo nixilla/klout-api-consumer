@@ -25,7 +25,7 @@ class IdentityTest extends \PHPUnit_Framework_TestCase
                     'score' => 51,
                     'topics' => array(),
                     'influence' => array('ok')
-                ), $consumer))
+                )))
             );
 
         $identity = $consumer->getIdentity('tester', Identity::TWITTER_SCREEN_NAME);
