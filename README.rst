@@ -27,7 +27,7 @@ Identity methods
     $identity = $consumer->getIdentity($twitter_id, Identity::TWITTER_ID);
 
     // http://api.klout.com/v2/identity.json/gp/{google_id}
-    $identity = $consumer->getIdentity($google_id, Identity::GOOGLE_ID);
+    $identity = $consumer->getIdentity($google_id, Identity::GOOGLE_PLUS_ID);
 
     // http://api.klout.com/v2/identity.json/twitter?screenName={twitter_screen_name}
     $identity = $consumer->getIdentity($twitter_screen_name, Identity::TWITTER_SCREEN_NAME);

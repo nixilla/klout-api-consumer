@@ -9,7 +9,9 @@ class IdentityTest extends \PHPUnit_Framework_TestCase
     public function testAccessors()
     {
         $consumer = $this
-            ->getMock('Klout\Api\Consumer', array('getIdentity'));
+            ->getMockBuilder('Klout\Api\Consumer')
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $consumer
             ->expects($this->once())
@@ -20,8 +22,7 @@ class IdentityTest extends \PHPUnit_Framework_TestCase
             )
             ->will(
                 $this->returnValue(Identity::getInstance(array(
-                    'kloutId' => 12345,
-                    'nick' => 'tester',
+                    Identity::KLOUT_ID => 12345,
                     'score' => 51,
                     'topics' => array(),
                     'influence' => array('ok')
@@ -29,6 +30,9 @@ class IdentityTest extends \PHPUnit_Framework_TestCase
             );
 
         $identity = $consumer->getIdentity('tester', Identity::TWITTER_SCREEN_NAME);
+
+        $this->assertEquals(12345, $identity->getId(), 'Default id is kloutId');
+        $this->assertEquals(12345, $identity->getId(Identity::KLOUT_ID), 'kloutId is correct');
 
         $this->assertEquals(51, $identity->getScore(), 'Accessor method getScore OK');
         $this->assertEquals(51, $identity['score'], 'ArrayAccess method [score] OK');
