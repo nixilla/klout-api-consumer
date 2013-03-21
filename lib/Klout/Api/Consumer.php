@@ -105,20 +105,22 @@ class Consumer
                 true
             );
 
-            foreach($influence as $key => $ins)
+
+            if(is_array($influence))
             {
-                if(is_array($ins))
+                foreach($influence as $key => $ins)
                 {
-                    foreach($ins as $someone)
-                        $user['influence'][$key][] = Identity::getInstance($someone['entity']['payload']);
-                }
-                else
-                {
-                    $user['influence'][$key] = $ins;
+                    if(is_array($ins))
+                    {
+                        foreach($ins as $someone)
+                            $user['influence'][$key][] = Identity::getInstance($someone['entity']['payload']);
+                    }
+                    else
+                    {
+                        $user['influence'][$key] = $ins;
+                    }
                 }
             }
-
-
         }
 
         if(is_array($user))
