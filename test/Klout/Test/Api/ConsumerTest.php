@@ -69,6 +69,15 @@ class ConsumerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @expectedException \RuntimeException
+     */
+    public function testGetIdentityWithUserNotFound()
+    {
+        $consumer = new Consumer($this->getClientWithSingleCall(null, Identity::TWITTER_SCREEN_NAME), 'secret_key_here');
+        $identity = $consumer->getIdentity('tester', Identity::TWITTER_SCREEN_NAME);
+    }
+
+    /**
      * @param $input
      * @param string $type
      * @return \PHPUnit_Framework_MockObject_MockObject

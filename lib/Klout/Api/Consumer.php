@@ -120,7 +120,11 @@ class Consumer
 
 
         }
-        return Identity::getInstance($user);
+
+        if(is_array($user))
+            return Identity::getInstance($user);
+        else
+            throw new \RuntimeException('User not found');
 
     }
 }
